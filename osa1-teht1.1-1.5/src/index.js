@@ -20,13 +20,11 @@ const Osa = (props) => {
 
 const Sisalto = (props) => {
 
-  const [eka,toka,kolmas]= props.osat
-
   return (
     <div>
-    <Osa osa={eka.nimi}  tehtavia={eka.tehtavia}/>
-    <Osa osa={toka.nimi}  tehtavia={toka.tehtavia}/>
-    <Osa osa={kolmas.nimi}  tehtavia={kolmas.tehtavia}/>
+    <Osa osa={props.osat[0].nimi}  tehtavia={props.osat[0].tehtavia}/>
+    <Osa osa={props.osat[1].nimi}  tehtavia={props.osat[1].tehtavia}/>
+    <Osa osa={props.osat[2].nimi}  tehtavia={props.osat[2].tehtavia}/>
 
 
     </div>
@@ -35,14 +33,10 @@ const Sisalto = (props) => {
 
 
 const Yhteensa = (props) => {
-  const [eka, toka, kolmas]= props.osat
-  const m2 = props.osat.map((olio) => olio.tehtavia )
-  console.log(m2) // tulostuu [ '<li>1</li>', '<li>2</li>', '<li>3</li>', '<li>4</li>' ]
+
   return (
     <div>
-      <p>yhteensä {props.yhteensa} tehtävää</p>
-
-      <p>yhteensä {m2} tehtävää</p>
+      <p>yhteensä {props.osat[0].tehtavia + props.osat[1].tehtavia + props.osat[2].tehtavia} tehtävää</p>
     </div>
   )
 }
