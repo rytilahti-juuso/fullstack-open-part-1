@@ -3,14 +3,18 @@ import ReactDOM from 'react-dom'
 
 const Statistics = ({hyva, neutraali, huono, keskiarvo, positiivisia}) => {
   return (
+    <div>
+    <h1> Statistiikka</h1>
     <table>
-      <h1> Statistiikka</h1>
-      <Statistic text="hyva" num={hyva} />
-      <Statistic text="neutraali" num={neutraali} />
-      <Statistic text="huono" num={huono} />
-      <Statistic text="keskiarvo" num={keskiarvo} />
-      <Statistic text="positiivisia" num={positiivisia} />
+      <tbody>
+        <Statistic text="hyva" num={hyva} />
+        <Statistic text="neutraali" num={neutraali} />
+        <Statistic text="huono" num={huono} />
+        <Statistic text="keskiarvo" num={keskiarvo} />
+        <Statistic text="positiivisia" num={positiivisia} />
+      </tbody>
     </table>
+    </div>
   )
 }
 
