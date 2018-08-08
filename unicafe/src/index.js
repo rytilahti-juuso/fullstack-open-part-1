@@ -59,7 +59,26 @@ class App extends React.Component {
 
 
   render() {
-
+    const onkoPainettu = () => {
+      if(this.state.hyva === 0 && this.state.neutraali === 0 && this.state.huono === 0){
+        return(
+          <div>
+          <p>Ei yhtään palautetta annettu</p>
+          </div>
+        )
+      }
+      return(
+        <div>
+        <Statistics
+        hyva= {this.state.hyva}
+        neutraali={this.state.neutraali}
+        huono={this.state.huono}
+        keskiarvo={(this.state.hyva+(this.state.huono*(-1)))/(this.state.huono+ this.state.hyva + this.state.neutraali)}
+        positiivisia= {100*(this.state.hyva / (this.state.huono+ this.state.hyva + this.state.neutraali))}
+         />
+        </div>
+      )
+    }
     return (
       <div>
         <h1>Anna Palautetta</h1>
@@ -76,13 +95,8 @@ class App extends React.Component {
         teksti="Huono"
         kasvata= {this.kasvataYhdella("huono")}
         />
-        <Statistics
-        hyva= {this.state.hyva}
-        neutraali={this.state.neutraali}
-        huono={this.state.huono}
-        keskiarvo={(this.state.hyva+(this.state.huono*(-1)))/(this.state.huono+ this.state.hyva + this.state.neutraali)}
-        positiivisia= {100*(this.state.hyva / (this.state.huono+ this.state.hyva + this.state.neutraali))}
-         />
+        <div>{onkoPainettu()}</div>
+
       </div>
     )
   }
