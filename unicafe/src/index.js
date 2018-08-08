@@ -1,35 +1,30 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-const Statistics = (props) => {
+const Statistics = ({hyva, neutraali, huono, keskiarvo, positiivisia}) => {
   return (
     <div>
       <h1> Statistiikka</h1>
-      <p>hyvä {props.hyva}</p>
-      <p>neutraali {props.neutraali}</p>
-      <p>huono {props.huono}</p>
-      <p>keskiarvo</p>
-      <p>positiivisia</p>
+      <Statistic text="hyva" num={hyva} />
+      <Statistic text="neutraali" num={neutraali} />
+      <Statistic text="huono" num={huono} />
+      <Statistic text="keskiarvo" num={keskiarvo} />
+      <Statistic text="positiivisia" num={positiivisia} />
     </div>
   )
 }
 
-const Statistic = (props) => {
+const Statistic = ({text, num}) => {
   return(
     <div>
-      <h1> Statistiikka</h1>
-      <p>hyvä {props.hyva}</p>
-      <p>neutraali {props.neutraali}</p>
-      <p>huono {props.huono}</p>
-      <p>keskiarvo</p>
-      <p>positiivisia</p>
+      <p>{text} {num} </p>
     </div>
   )
 }
 
 const Button = (props) => {
   return(
-    
+
 <button onClick ={ props.kasvata} >{props.teksti}</button>
 
   )
@@ -81,13 +76,13 @@ class App extends React.Component {
         teksti="Huono"
         kasvata= {this.kasvataYhdella("huono")}
         />
-        <Statistics />
-        <h1> Statistiikka</h1>
-        <p>hyvä {this.state.hyva}</p>
-        <p>neutraali {this.state.neutraali}</p>
-        <p>huono {this.state.huono}</p>
-        <p>keskiarvo {(this.state.hyva+(this.state.huono*(-1)))/(this.state.huono+ this.state.hyva + this.state.neutraali)}</p>
-        <p>positiivisia {100*(this.state.hyva / (this.state.huono+ this.state.hyva + this.state.neutraali))}%</p>
+        <Statistics
+        hyva= {this.state.hyva}
+        neutraali={this.state.neutraali}
+        huono={this.state.huono}
+        keskiarvo={(this.state.hyva+(this.state.huono*(-1)))/(this.state.huono+ this.state.hyva + this.state.neutraali)}
+        positiivisia= {100*(this.state.hyva / (this.state.huono+ this.state.hyva + this.state.neutraali))}
+         />
       </div>
     )
   }
