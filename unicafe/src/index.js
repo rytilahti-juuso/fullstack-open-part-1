@@ -11,18 +11,18 @@ const Statistics = ({hyva, neutraali, huono, keskiarvo, positiivisia}) => {
         <Statistic text="neutraali" num={neutraali} />
         <Statistic text="huono" num={huono} />
         <Statistic text="keskiarvo" num={keskiarvo} />
-        <Statistic text="positiivisia" num={positiivisia} />
+        <Statistic text="positiivisia" num={positiivisia} symboli={"%"} />
       </tbody>
     </table>
     </div>
   )
 }
 
-const Statistic = ({text, num}) => {
+const Statistic = ({text, num, symboli}) => {
   return(
     <tr>
     <td>{text}</td>
-    <td>{num}</td>
+    <td>{Math.round(num * 100) / 100} {symboli}</td>
     </tr>
   )
 }
